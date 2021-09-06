@@ -18,6 +18,7 @@ const MEEditor = {
     editorWrapperContent.className = 'mee-content'
 
     editorWrapperContent.setAttribute('contenteditable', true)
+    editorWrapperContent.setAttribute('spellcheck', false)
 
     editorToolbar.appendChild(editorToolbarButtons)
     editorWrapper.appendChild(editorWrapperContent)
