@@ -1,5 +1,5 @@
 const MEEditor = {
-
+  selector: null,
 }
 
 export default MEEditor
