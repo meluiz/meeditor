@@ -3,6 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "author": "meluiz",
+  "keywords": [],
+  "description": "Apenas mais um simples ritch-text editor ",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meluiz/meeditor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/meluiz/meeditor/issues"
+  },
+  "homepage": "https://github.com/meluiz/meeditor#readme",
   "scripts": {
     "start": "mix watch",
     "build": "mix --production"
