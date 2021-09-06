@@ -8,6 +8,8 @@
 
 **Não é recomendado o uso desse editor para sites em produção**
 
+[Demonstração](http://meeditor.meluiz.com/)
+
 # Comece
 Inclua os arquivos `meeditor.min.css` e `meeditor.min.js` no `<head>` da sua página.
 
