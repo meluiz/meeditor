@@ -33,7 +33,22 @@ const MEEditor = {
 
     return
   },
-  createButtons: ({ target }) => {
+  pressedButton: ({ currentTarget }, { content }) => {
+    const pressed = currentTarget.getAttribute('aria-pressed')
+    const command = currentTarget.getAttribute('data-cmd')
+
+    if (command.startsWith('justify')) {
+      document.querySelectorAll('[data-cmd]').forEach((target) => {
+        const command = target.getAttribute('data-cmd')
+        if (command.startsWith('justify')) target.setAttribute('aria-pressed',false)
+      })
+    }
+
+    currentTarget.setAttribute('aria-pressed', pressed === 'true' ? 'false' : 'true')
+    document.execCommand(command, false, null)
+    content.focus()
+  },
+  createButtons: ({ target, pressedButton }) => {
     const buttons = [
       [
         {
@@ -47,7 +62,10 @@ const MEEditor = {
           `,
           attributes: [
             {
-              class: 'mee-button mee-button-bold'
+              class: 'mee-button mee-button-bold',
+              type: 'button',
+              role: 'button',
+              'aria-pressed': false
             }
           ]
         },
@@ -62,7 +80,10 @@ const MEEditor = {
           `,
           attributes: [
             {
-              class: 'mee-button mee-button-italic'
+              class: 'mee-button mee-button-italic',
+              type: 'button',
+              role: 'button',
+              'aria-pressed': false
             }
           ]
         },
@@ -77,7 +98,10 @@ const MEEditor = {
           `,
           attributes: [
             {
-              class: 'mee-button mee-button-underline'
+              class: 'mee-button mee-button-underline',
+              type: 'button',
+              role: 'button',
+              'aria-pressed': false
             }
           ]
         },
@@ -92,14 +116,17 @@ const MEEditor = {
           `,
           attributes: [
             {
-              class: 'mee-button mee-button-extra-text'
+              class: 'mee-button mee-button-extra-text',
+              type: 'button',
+              role: 'button',
+              'aria-pressed': false,
             }
           ]
         }
       ],
       [
         {
-          name: 'left',
+          name: 'justifyLeft',
           description: 'Alinhar à esquerda',
           value: `
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -109,12 +136,15 @@ const MEEditor = {
           `,
           attributes: [
             {
-              class: 'mee-button mee-button-align'
+              class: 'mee-button mee-button-align',
+              type: 'button',
+              role: 'button',
+              'aria-pressed': false
             }
           ]
         },
         {
-          name: 'center',
+          name: 'justifyCenter',
           description: 'Alinhar ao centro',
           value: `
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -124,12 +154,15 @@ const MEEditor = {
           `,
           attributes: [
             {
-              class: 'mee-button mee-button-align'
+              class: 'mee-button mee-button-align',
+              type: 'button',
+              role: 'button',
+              'aria-pressed': false
             }
           ]
         },
         {
-          name: 'right',
+          name: 'justifyRight',
           description: 'Alinhar à direita',
           value: `
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -139,12 +172,15 @@ const MEEditor = {
           `,
           attributes: [
             {
-              class: 'mee-button mee-button-align'
+              class: 'mee-button mee-button-align',
+              type: 'button',
+              role: 'button',
+              'aria-pressed': false
             }
           ]
         },
         {
-          name: 'justify',
+          name: 'justifyFull',
           description: 'Justificado',
           value: `
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -154,7 +190,10 @@ const MEEditor = {
           `,
           attributes: [
             {
-              class: 'mee-button mee-button-align'
+              class: 'mee-button mee-button-align',
+              type: 'button',
+              role: 'button',
+              'aria-pressed': false
             }
           ]
         },
@@ -168,20 +207,19 @@ const MEEditor = {
       group.forEach((object) => {
         const button = document.createElement('button')
         button.innerHTML = object.value
-
-        button.setAttribute('type', 'button')
-        button.setAttribute('role', 'button')
-        button.setAttribute('aria-pressed', 'false')
+        
         button.setAttribute('data-cmd', object.name)
         button.setAttribute('data-title', object.description)
 
         if (object.attributes) {
-          object.attributes.forEach((attr) => {
-            if (attr.class) {
-              button.className = attr.class
-            }
+          object.attributes.forEach((attribute) => {
+            Object.entries(attribute).forEach(([ key, value ]) => {
+              button.setAttribute(key, value)
+            })
           })
         }
+
+        button.addEventListener('click', (event) => pressedButton(event, target))
 
         buttonGroup.appendChild(button)
       })
