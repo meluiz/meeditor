@@ -11,7 +11,7 @@ const MEEditor = {
     const editorWrapper = document.createElement('div')
     const editorWrapperContent = document.createElement('div')
 
-    editor.className = 'mee-box'
+    editor.className = 'mee-box mee-variant'
     editorToolbar.className = 'mee-toolbar'
     editorToolbarButtons.className = 'mee-buttons'
     editorWrapper.className = 'mee-wrapper'
@@ -32,9 +32,166 @@ const MEEditor = {
 
     return
   },
+  createButtons: ({ target }) => {
+    const buttons = [
+      [
+        {
+          name: 'bold',
+          description: 'Negrito',
+          value: `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path fill="none" d="M0 0h24v24H0z"/>
+              <path d="M8 11h4.5a2.5 2.5 0 1 0 0-5H8v5zm10 4.5a4.5 4.5 0 0 1-4.5 4.5H6V4h6.5a4.5 4.5 0 0 1 3.256 7.606A4.498 4.498 0 0 1 18 15.5zM8 13v5h5.5a2.5 2.5 0 1 0 0-5H8z"/>
+            </svg>
+          `,
+          attributes: [
+            {
+              class: 'mee-button mee-button-bold'
+            }
+          ]
+        },
+        {
+          name: 'italic',
+          description: 'Itálico',
+          value: `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path fill="none" d="M0 0h24v24H0z"/>
+              <path d="M15 20H7v-2h2.927l2.116-12H9V4h8v2h-2.927l-2.116 12H15z"/>
+            </svg>
+          `,
+          attributes: [
+            {
+              class: 'mee-button mee-button-italic'
+            }
+          ]
+        },
+        {
+          name: 'underline',
+          description: 'Sublinhado',
+          value: `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path fill="none" d="M0 0h24v24H0z"/>
+              <path d="M8 3v9a4 4 0 1 0 8 0V3h2v9a6 6 0 1 1-12 0V3h2zM4 20h16v2H4v-2z"/>
+            </svg>
+          `,
+          attributes: [
+            {
+              class: 'mee-button mee-button-underline'
+            }
+          ]
+        },
+        {
+          name: 'text',
+          description: 'Mais texto',
+          value: `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path fill="none" d="M0 0h24v24H0z"/>
+              <path d="M13 6v15h-2V6H5V4h14v2z"/>
+            </svg>
+          `,
+          attributes: [
+            {
+              class: 'mee-button mee-button-extra-text'
+            }
+          ]
+        }
+      ],
+      [
+        {
+          name: 'left',
+          description: 'Alinhar à esquerda',
+          value: `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path fill="none" d="M0 0h24v24H0z"/>
+              <path d="M3 4h18v2H3V4zm0 15h14v2H3v-2zm0-5h18v2H3v-2zm0-5h14v2H3V9z"/>
+            </svg>
+          `,
+          attributes: [
+            {
+              class: 'mee-button mee-button-align'
+            }
+          ]
+        },
+        {
+          name: 'center',
+          description: 'Alinhar ao centro',
+          value: `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path fill="none" d="M0 0h24v24H0z"/>
+              <path d="M3 4h18v2H3V4zm2 15h14v2H5v-2zm-2-5h18v2H3v-2zm2-5h14v2H5V9z"/>
+            </svg>
+          `,
+          attributes: [
+            {
+              class: 'mee-button mee-button-align'
+            }
+          ]
+        },
+        {
+          name: 'right',
+          description: 'Alinhar à direita',
+          value: `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path fill="none" d="M0 0h24v24H0z"/>
+              <path d="M3 4h18v2H3V4zm4 15h14v2H7v-2zm-4-5h18v2H3v-2zm4-5h14v2H7V9z"/>
+            </svg>
+          `,
+          attributes: [
+            {
+              class: 'mee-button mee-button-align'
+            }
+          ]
+        },
+        {
+          name: 'justify',
+          description: 'Justificado',
+          value: `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path fill="none" d="M0 0h24v24H0z"/>
+              <path d="M3 4h18v2H3V4zm0 15h18v2H3v-2zm0-5h18v2H3v-2zm0-5h18v2H3V9z"/>
+            </svg>
+          `,
+          attributes: [
+            {
+              class: 'mee-button mee-button-align'
+            }
+          ]
+        },
+      ]
+    ]
+
+    buttons.forEach((group) => {
+      const buttonGroup = document.createElement('div')
+      buttonGroup.className = 'mee-buttons-group'
+
+      group.forEach((object) => {
+        const button = document.createElement('button')
+        button.innerHTML = object.value
+
+        button.setAttribute('type', 'button')
+        button.setAttribute('role', 'button')
+        button.setAttribute('aria-pressed', 'false')
+        button.setAttribute('data-cmd', object.name)
+        button.setAttribute('data-title', object.description)
+
+        if (object.attributes) {
+          object.attributes.forEach((attr) => {
+            if (attr.class) {
+              button.className = attr.class
+            }
+          })
+        }
+
+        buttonGroup.appendChild(button)
+      })
+      
+      target.buttons.appendChild(buttonGroup)
+    })
+  },
   start: function({ selector }) {
     this.selector = document.querySelector(selector)
     this.createEditor(this)
+    this.createButtons(this)
 
     return
   }
