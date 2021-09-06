@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "author": "meluiz",
-  "keywords": [],
+  "keywords": [ "ritchtext", "ritch-text", "ritch text", "wysiwyg editor", "wysiwyg-editor", "wysiwyg", "ritch", "text", "editor", "editor de texto" ],
   "description": "Apenas mais um simples ritch-text editor ",
   "repository": {
     "type": "git",
