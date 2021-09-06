@@ -1,10 +1,21 @@
 {
   "name": "@meluiz/meeditor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
   "author": "meluiz",
-  "keywords": [ "ritchtext", "ritch-text", "ritch text", "wysiwyg editor", "wysiwyg-editor", "wysiwyg", "ritch", "text", "editor", "editor de texto" ],
+  "keywords": [
+    "ritchtext",
+    "ritch-text",
+    "ritch text",
+    "wysiwyg editor",
+    "wysiwyg-editor",
+    "wysiwyg",
+    "ritch",
+    "text",
+    "editor",
+    "editor de texto"
+  ],
   "description": "Apenas mais um simples ritch-text editor ",
   "repository": {
     "type": "git",
