@@ -16,13 +16,11 @@ Inclua os arquivos `meeditor.min.css` e `meeditor.min.js` no `<head>` da sua pá
   …
   <!-- jsDelivr  -->
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/meluiz/meeditor/dist/meeditor.min.css">
-
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/meluiz/meeditor/dist/meeditor.min.js"></script>
 
   
   <!-- Unpkg  -->
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/@meluiz/meeditor@1.0.0/dist/meeditor.min.css">
-
   <script type="text/javascript" src="https://unpkg.com/@meluiz/meeditor@1.0.0/dist/meeditor.min.js"></script>
 </head>
 ```
