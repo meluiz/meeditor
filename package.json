@@ -1,0 +1,16 @@
+{
+  "name": "meeditor",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "mix watch",
+    "build": "mix --production"
+  },
+  "devDependencies": {
+    "laravel-mix": "^6.0.29",
+    "resolve-url-loader": "4.0.0",
+    "sass": "^1.39.0",
+    "sass-loader": "12.1.0"
+  }
+}
