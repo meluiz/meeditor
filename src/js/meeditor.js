@@ -31,6 +31,8 @@ const MEEditor = {
     target.buttons = editorToolbarButtons
     target.content = editorWrapperContent
 
+    document.execCommand('defaultParagraphSeparator', false, editorConfig.defaultSparator);
+
     return
   },
   pressedButton: ({ currentTarget }, { content }) => {
