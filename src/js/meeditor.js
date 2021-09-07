@@ -244,6 +244,12 @@ const MEEditor = {
   },
   start: function({ selector, width, height, theme, defaultSparator }) {
     this.selector = document.querySelector(selector)
+
+    this.editorConfig.width = width || this.editorConfig.width
+    this.editorConfig.height = height || this.editorConfig.height
+    this.editorConfig.theme = theme || this.editorConfig.theme
+    this.editorConfig.defaultSparator = defaultSparator || this.editorConfig.defaultSparator
+
     this.createEditor(this)
     this.createButtons(this)
 
