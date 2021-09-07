@@ -10,7 +10,7 @@ const MEEditor = {
     content: null,
     buttons: null
   },
-  createEditor: ({ selector, target, editorConfig }) => {
+  createEditor: function () {
     const editor = document.createElement('div')
     const editorToolbar = document.createElement('div')
     const editorToolbarButtons = document.createElement('div')
@@ -24,11 +24,11 @@ const MEEditor = {
     editorWrapperContent.className = 'mee-content'
 
     editor.style.cssText = `
-      --mee-editor-width: ${typeof editorConfig.width == 'number' ? `${editorConfig.width}px` : editorConfig.width};
-      --mee-editor-height: ${typeof editorConfig.height == 'number' ? `${editorConfig.height}px` : editorConfig.height};
+      --mee-editor-width: ${typeof this.editorConfig.width == 'number' ? `${this.editorConfig.width}px` : this.editorConfig.width};
+      --mee-editor-height: ${typeof this.editorConfig.height == 'number' ? `${this.editorConfig.height}px` : this.editorConfig.height};
     `
 
-    editor.setAttribute('theme', editorConfig.theme)
+    editor.setAttribute('theme', this.editorConfig.theme)
 
     editorWrapperContent.setAttribute('contenteditable', true)
     editorWrapperContent.setAttribute('spellcheck', false)
@@ -39,12 +39,12 @@ const MEEditor = {
     editor.appendChild(editorToolbar)
     editor.appendChild(editorWrapper)
 
-    selector.replaceWith(editor)
+    this.selector.replaceWith(editor)
 
-    target.buttons = editorToolbarButtons
-    target.content = editorWrapperContent
+    this.target.buttons = editorToolbarButtons
+    this.target.content = editorWrapperContent
 
-    document.execCommand('defaultParagraphSeparator', false, editorConfig.defaultSparator);
+    document.execCommand('defaultParagraphSeparator', false, this.editorConfig.defaultSparator);
 
     return
   },
@@ -63,7 +63,7 @@ const MEEditor = {
     document.execCommand(command, false, null)
     content.focus()
   },
-  createButtons: ({ target, pressedButton }) => {
+  createButtons: function ({ target, pressedButton }) {
     const buttons = [
       [
         {
@@ -234,7 +234,7 @@ const MEEditor = {
           })
         }
 
-        button.addEventListener('click', (event) => pressedButton(event, target))
+        button.addEventListener('click', (event) => this.pressedButton(event, this.target))
 
         buttonGroup.appendChild(button)
       })
