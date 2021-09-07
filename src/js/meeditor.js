@@ -10,7 +10,7 @@ const MEEditor = {
     content: null,
     buttons: null
   },
-  createEditor: ({ selector, target }) => {
+  createEditor: ({ selector, target, editorConfig }) => {
     const editor = document.createElement('div')
     const editorToolbar = document.createElement('div')
     const editorToolbarButtons = document.createElement('div')
