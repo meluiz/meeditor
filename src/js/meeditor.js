@@ -17,7 +17,7 @@ const MEEditor = {
     const editorWrapper = document.createElement('div')
     const editorWrapperContent = document.createElement('div')
 
-    editor.className = 'mee-box mee-variant'
+    editor.className = 'mee-box'
     editorToolbar.className = 'mee-toolbar'
     editorToolbarButtons.className = 'mee-buttons'
     editorWrapper.className = 'mee-wrapper'
