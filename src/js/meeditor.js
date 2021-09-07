@@ -1,5 +1,11 @@
 const MEEditor = {
   selector: null,
+  editorConfig: {
+    width: '768px',
+    height: '192px',
+    theme: 'light',
+    defaultSparator: 'div',
+  },
   target: {
     content: null,
     buttons: null
