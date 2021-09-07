@@ -63,7 +63,7 @@ const MEEditor = {
     document.execCommand(command, false, null)
     content.focus()
   },
-  createButtons: function ({ target, pressedButton }) {
+  createButtons: function () {
     const buttons = [
       [
         {
@@ -239,7 +239,7 @@ const MEEditor = {
         buttonGroup.appendChild(button)
       })
       
-      target.buttons.appendChild(buttonGroup)
+      this.target.buttons.appendChild(buttonGroup)
     })
   },
   start: function({ selector, width, height, theme, defaultSparator }) {
