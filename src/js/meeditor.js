@@ -17,6 +17,13 @@ const MEEditor = {
     editorWrapper.className = 'mee-wrapper'
     editorWrapperContent.className = 'mee-content'
 
+    editor.style.cssText = `
+      --mee-editor-width: ${typeof editorConfig.width == 'number' ? `${editorConfig.width}px` : editorConfig.width};
+      --mee-editor-height: ${typeof editorConfig.height == 'number' ? `${editorConfig.height}px` : editorConfig.height};
+    `
+
+    editor.setAttribute('theme', editorConfig.theme)
+
     editorWrapperContent.setAttribute('contenteditable', true)
     editorWrapperContent.setAttribute('spellcheck', false)
 
