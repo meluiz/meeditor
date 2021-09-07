@@ -2,29 +2,22 @@
 
 .mee {
   &-box {
-    width: var(--me-width);
-    min-height: 0;
+    width: 100%;
+    max-width: var(--mee-editor-width);
     display: flex;
     flex-direction: column;
-    border-radius: 8px;
-    position: relative;
-    margin: 24px;
+    box-sizing: border-box;
     overflow: hidden;
-    background-color: #fff;
-    --tw-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  }
-
-  &-variant {
-    --me-width: 640px;
-    --me-content-height: 192px;
+    position: relative;
+    visibility: inherit;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   }
 
   &-toolbar {
-    padding: 0 24px;
-    position: sticky;
-    top: 0;
-    background-color: inherit;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
   }
 
   &-buttons {
@@ -51,28 +44,18 @@
     background-color: transparent;
     position: relative;
 
-    &[aria-pressed='true'] {
-      color: #2563EB;
-    }
-
-    &:hover::after {
-      visibility: visible;
-    }
-
+    &:hover::after { visibility: visible }
     &::after {
       content: attr(data-title);
       position: absolute;
       top: calc(100%); left: 50%;
       transform: translateX(-50%);
-      color: white;
-      border-radius: 2px;
-      padding: 4px 8px;
       white-space: nowrap;
       visibility: hidden;
       pointer-events: none;
       font-weight: 600;
       font-family: 'Inter', 'Arial', 'Roboto', 'Segoe UI', Verdana, Geneva, Tahoma, sans-serif;
-      background-color: #18181b;
+      z-index: 10;
     }
 
     svg {
@@ -83,18 +66,94 @@
   }
 
   &-wrapper {
-    padding: 0 24px 24px 24px;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
     font-family: 'Inter', 'Arial', 'Roboto', 'Segoe UI', Verdana, Geneva, Tahoma, sans-serif;
   }
 
   &-content {
+    height: var(--mee-editor-height);
     overflow: hidden;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: pre-line;
-    height: var(--me-content-height);
+    white-space: normal;
+    word-wrap:break-word;
+    overflow-y: auto;
+
     &:focus {
       outline: none;
+    }
+  }
+}
+
+.mee {
+  &-box {
+    &[theme="light"] {
+      border-radius: 8px;
+      background-color: white;
+
+      .mee {
+        &-toolbar {
+            padding: 0 24px;
+            background-color: inherit;
+        }
+
+        &-button {
+          color: #18181b;
+          &[aria-pressed='true'] { color: #2563EB }
+
+          &::after {
+            color: white;
+            border-radius: 2px;
+            padding: 4px 8px;
+            background-color: #18181b;
+          }
+        }
+
+        &-wrapper {
+          padding: 0 8px 8px 8px;
+        }
+
+        &-content {
+          padding: 0 24px 24px 24px;
+          color: #18181b;
+          scrollbar-width: thin;
+        }
+      }
+    }
+    &[theme="dark"] {
+      border-radius: 8px;
+      background-color: #18181b;
+
+      .mee {
+        &-toolbar {
+            padding: 0 24px;
+            background-color: inherit;
+          scrollbar-width: thin;
+        }
+
+        &-button {
+          color: white;
+          &[aria-pressed='true'] { color: #2563EB }
+
+          &::after {
+            color: #18181b;
+            border-radius: 2px;
+            padding: 4px 8px;
+            background-color: #F4F4F5;
+          }
+        }
+
+        &-wrapper {
+          padding: 0 8px 8px 8px;
+        }
+
+        &-content {
+          scrollbar-width: thin;
+          padding: 0 24px 24px 24px;
+          color: white;
+        }
+      }
     }
   }
 }
