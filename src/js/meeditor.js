@@ -242,7 +242,7 @@ const MEEditor = {
       target.buttons.appendChild(buttonGroup)
     })
   },
-  start: function({ selector }) {
+  start: function({ selector, width, height, theme, defaultSparator }) {
     this.selector = document.querySelector(selector)
     this.createEditor(this)
     this.createButtons(this)
