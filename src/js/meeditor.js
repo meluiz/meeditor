@@ -203,7 +203,7 @@ const MEEditor = {
       ]
     ]
 
-    this.createElement(buttons, { namePrefix: 'buttons' })
+    this.createElement(buttons)
   },
   charCounter: function (event, editor) {
     const charCounter = event.target.innerHTML.replace(/(<([^>]+)>)/gi, "").length
