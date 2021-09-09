@@ -6,9 +6,24 @@ const MEEditor = {
     theme: 'light',
     defaultSparator: 'div',
   },
-  target: {
-    content: null,
-    buttons: null
+  target: {},
+  createElement: function (elements) {
+    elements.forEach((element) => {
+      const node = document.createElement(element.type)
+      if (element.attributes) {
+        element.attributes.forEach((attribute) => {
+          Object.entries(attribute).forEach(([ key, value ]) => {
+            node.setAttribute(key, value)
+          })
+        })
+      }
+
+      this.target[element.name] = node
+
+      if (element.parentNode) this.target[element.parentNode].appendChild(node)
+      if (element.html) node.innerHTML += element.html
+      if (element.children) this.createElement(element.children)
+    })
   },
   createEditor: function () {
     const editor = document.createElement('div')
