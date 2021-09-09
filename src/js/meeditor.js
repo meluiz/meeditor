@@ -32,11 +32,7 @@ const MEEditor = {
     const editorWrapper = document.createElement('div')
     const editorWrapperContent = document.createElement('div')
 
-    editor.className = 'mee-box'
-    editorToolbar.className = 'mee-toolbar'
-    editorToolbarButtons.className = 'mee-buttons'
-    editorWrapper.className = 'mee-wrapper'
-    editorWrapperContent.className = 'mee-content'
+    this.createElement(elements)
 
     editor.style.cssText = `
       --mee-editor-width: ${typeof this.editorConfig.width == 'number' ? `${this.editorConfig.width}px` : this.editorConfig.width};
@@ -230,32 +226,11 @@ const MEEditor = {
       ]
     ]
 
-    buttons.forEach((group) => {
-      const buttonGroup = document.createElement('div')
-      buttonGroup.className = 'mee-buttons-group'
-
-      group.forEach((object) => {
-        const button = document.createElement('button')
-        button.innerHTML = object.value
-        
-        button.setAttribute('data-cmd', object.name)
-        button.setAttribute('data-title', object.description)
-
-        if (object.attributes) {
-          object.attributes.forEach((attribute) => {
-            Object.entries(attribute).forEach(([ key, value ]) => {
-              button.setAttribute(key, value)
-            })
-          })
-        }
-
-        button.addEventListener('click', (event) => this.pressedButton(event, this.target))
-
-        buttonGroup.appendChild(button)
-      })
-      
-      this.target.buttons.appendChild(buttonGroup)
-    })
+    this.createElement(buttons, { namePrefix: 'buttons' })
+  },
+  charCounter: function (event, editor) {
+    const charCounter = event.target.innerHTML.replace(/(<([^>]+)>)/gi, "").length
+    editor.target.counter.textContent = charCounter
   },
   start: function({ selector, width, height, theme, defaultSparator }) {
     this.selector = document.querySelector(selector)
