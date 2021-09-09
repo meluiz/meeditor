@@ -10,11 +10,20 @@
   visibility: inherit;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
-.mee-toolbar {
+.mee-toolbar, .mee-toolbar-overload {
   min-height: 0;
   display: flex;
   flex-direction: column;
   position: relative;
+}
+.mee-toolbar-groups {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 12px 0;
+  gap: 24px;
+}
+.mee-toolbar-group {
+  display: flex;
 }
 .mee-buttons {
   display: flex;
@@ -42,9 +51,9 @@
   visibility: visible;
 }
 .mee-button::after {
-  content: attr(data-title);
+  content: attr(title);
   position: absolute;
-  top: calc(100%);
+  top: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
@@ -76,14 +85,26 @@
 .mee-content:focus {
   outline: none;
 }
+.mee-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
 
 .mee-box[theme=light] {
   border-radius: 8px;
   background-color: white;
 }
-.mee-box[theme=light] .mee-toolbar {
+.mee-box[theme=light] .mee-toolbar, .mee-box[theme=light] .mee-toolbar-overload {
   padding: 0 24px;
   background-color: inherit;
+}
+.mee-box[theme=light] .mee-toolbar-overload {
+  background-color: transparent;
+}
+.mee-box[theme=light] .mee-toolbar-groups {
+  background-color: transparent;
 }
 .mee-box[theme=light] .mee-button {
   color: #18181b;
@@ -97,6 +118,9 @@
   padding: 4px 8px;
   background-color: #18181b;
 }
+.mee-box[theme=light] .mee-button:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+}
 .mee-box[theme=light] .mee-wrapper {
   padding: 0 8px 8px 8px;
 }
@@ -109,10 +133,16 @@
   border-radius: 8px;
   background-color: #18181b;
 }
-.mee-box[theme=dark] .mee-toolbar {
+.mee-box[theme=dark] .mee-toolbar, .mee-box[theme=dark] .mee-toolbar-overload {
   padding: 0 24px;
   background-color: inherit;
   scrollbar-width: thin;
+}
+.mee-box[theme=dark] .mee-toolbar-overload {
+  background-color: transparent;
+}
+.mee-box[theme=dark] .mee-toolbar-groups {
+  background-color: transparent;
 }
 .mee-box[theme=dark] .mee-button {
   color: white;
@@ -121,10 +151,13 @@
   color: #2563EB;
 }
 .mee-box[theme=dark] .mee-button::after {
-  color: #18181b;
+  color: white;
   border-radius: 2px;
   padding: 4px 8px;
-  background-color: #F4F4F5;
+  background-color: #27272A;
+}
+.mee-box[theme=dark] .mee-button:hover {
+  background-color: rgba(255, 255, 255, 0.06);
 }
 .mee-box[theme=dark] .mee-wrapper {
   padding: 0 8px 8px 8px;

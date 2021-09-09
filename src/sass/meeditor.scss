@@ -18,6 +18,21 @@
     display: flex;
     flex-direction: column;
     position: relative;
+
+    &-overload {
+      @extend .mee-toolbar;
+    }
+
+    &-groups {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 12px 0;
+      gap: 24px;
+    }
+
+    &-group {
+      display: flex;
+    }
   }
 
   &-buttons {
@@ -46,9 +61,9 @@
 
     &:hover::after { visibility: visible }
     &::after {
-      content: attr(data-title);
+      content: attr(title);
       position: absolute;
-      top: calc(100%); left: 50%;
+      top: calc(100% + 8px); left: 50%;
       transform: translateX(-50%);
       white-space: nowrap;
       visibility: hidden;
@@ -84,6 +99,13 @@
       outline: none;
     }
   }
+
+  &-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
 }
 
 .mee {
@@ -96,6 +118,14 @@
         &-toolbar {
             padding: 0 24px;
             background-color: inherit;
+
+            &-overload {
+              background-color: transparent;
+            }
+        
+            &-groups {
+              background-color: transparent;
+            }
         }
 
         &-button {
@@ -107,6 +137,10 @@
             border-radius: 2px;
             padding: 4px 8px;
             background-color: #18181b;
+          }
+
+          &:hover {
+            background-color: rgba(0,0,0, .06);
           }
         }
 
@@ -121,15 +155,25 @@
         }
       }
     }
+
     &[theme="dark"] {
       border-radius: 8px;
       background-color: #18181b;
 
       .mee {
         &-toolbar {
-            padding: 0 24px;
-            background-color: inherit;
+          padding: 0 24px;
+          background-color: inherit;
           scrollbar-width: thin;
+    
+
+          &-overload {
+            background-color: transparent;
+          }
+      
+          &-groups {
+            background-color: transparent;
+          }
         }
 
         &-button {
@@ -137,10 +181,14 @@
           &[aria-pressed='true'] { color: #2563EB }
 
           &::after {
-            color: #18181b;
+            color: white;
             border-radius: 2px;
             padding: 4px 8px;
-            background-color: #F4F4F5;
+            background-color: #27272A;
+          }
+
+          &:hover {
+            background-color: rgba(255,255,255, .06);
           }
         }
 
