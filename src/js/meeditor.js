@@ -169,6 +169,10 @@ const MEEditor = {
         name: 'boldButton',
         type: 'button',
         parentNode: 'editorToolbarFormatting',
+        events: {
+          listener: 'click',
+          function: (event) => this.pressedButton(event, this.target.editorWrapperContent)
+        },
         attributes: [
           { class: 'mee-button mee-button-bold' },
           { type: 'button' },
@@ -189,6 +193,10 @@ const MEEditor = {
         name: 'italicButton',
         type: 'button',
         parentNode: 'editorToolbarFormatting',
+        events: {
+          listener: 'click',
+          function: (event) => this.pressedButton(event, this.target.editorWrapperContent)
+        },
         attributes: [
           { class: 'mee-button mee-button-italic' },
           { type: 'button' },
@@ -209,6 +217,10 @@ const MEEditor = {
         name: 'underlineButton',
         type: 'button',
         parentNode: 'editorToolbarFormatting',
+        events: {
+          listener: 'click',
+          function: (event) => this.pressedButton(event, this.target.editorWrapperContent)
+        },
         attributes: [
           { class: 'mee-button mee-button-underline' },
           { type: 'button' },
@@ -229,6 +241,10 @@ const MEEditor = {
         name: 'justifyLeftButton',
         type: 'button',
         parentNode: 'editorToolbarAlignment',
+        events: {
+          listener: 'click',
+          function: (event) => this.pressedButton(event, this.target.editorWrapperContent)
+        },
         attributes: [
           { class: 'mee-button mee-button-align' },
           { type: 'button' },
@@ -249,6 +265,10 @@ const MEEditor = {
         name: 'justifyCenterButton',
         type: 'button',
         parentNode: 'editorToolbarAlignment',
+        events: {
+          listener: 'click',
+          function: (event) => this.pressedButton(event, this.target.editorWrapperContent)
+        },
         attributes: [
           { class: 'mee-button mee-button-align' },
           { type: 'button' },
@@ -269,6 +289,10 @@ const MEEditor = {
         name: 'justifyRightButton',
         type: 'button',
         parentNode: 'editorToolbarAlignment',
+        events: {
+          listener: 'click',
+          function: (event) => this.pressedButton(event, this.target.editorWrapperContent)
+        },
         attributes: [
           { class: 'mee-button mee-button-align' },
           { type: 'button' },
@@ -289,6 +313,10 @@ const MEEditor = {
         name: 'justifyFullButton',
         type: 'button',
         parentNode: 'editorToolbarAlignment',
+        events: {
+          listener: 'click',
+          function: (event) => this.pressedButton(event, this.target.editorWrapperContent)
+        },
         attributes: [
           { class: 'mee-button mee-button-align' },
           { type: 'button' },
