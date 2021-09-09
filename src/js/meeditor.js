@@ -34,30 +34,7 @@ const MEEditor = {
 
     this.createElement(elements)
 
-    editor.style.cssText = `
-      --mee-editor-width: ${typeof this.editorConfig.width == 'number' ? `${this.editorConfig.width}px` : this.editorConfig.width};
-      --mee-editor-height: ${typeof this.editorConfig.height == 'number' ? `${this.editorConfig.height}px` : this.editorConfig.height};
-    `
-
-    editor.setAttribute('theme', this.editorConfig.theme)
-
-    editorWrapperContent.setAttribute('contenteditable', true)
-    editorWrapperContent.setAttribute('spellcheck', false)
-
-    editorToolbar.appendChild(editorToolbarButtons)
-    editorWrapper.appendChild(editorWrapperContent)
-
-    editor.appendChild(editorToolbar)
-    editor.appendChild(editorWrapper)
-
-    this.selector.replaceWith(editor)
-
-    this.target.buttons = editorToolbarButtons
-    this.target.content = editorWrapperContent
-
-    document.execCommand('defaultParagraphSeparator', false, this.editorConfig.defaultSparator);
-
-    return
+    this.selector.replaceWith(this.target.editor)
   },
   pressedButton: ({ currentTarget }, { content }) => {
     const pressed = currentTarget.getAttribute('aria-pressed')
