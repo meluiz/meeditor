@@ -147,7 +147,7 @@ const MEEditor = {
     this.createElement(elements)
     this.selector.replaceWith(this.target.editor)
   },
-  pressedButton: ({ currentTarget }, { content }) => {
+  pressedButton: function ({ currentTarget }, content) {
     const pressed = currentTarget.getAttribute('aria-pressed')
     const command = currentTarget.getAttribute('data-cmd')
 
