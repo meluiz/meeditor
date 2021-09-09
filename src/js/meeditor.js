@@ -21,6 +21,7 @@ const MEEditor = {
       this.target[element.name] = node
 
       if (element.parentNode) this.target[element.parentNode].appendChild(node)
+      if (element.events) node.addEventListener(element.events.listener, element.events.function)
       if (element.html) node.innerHTML += element.html
       if (element.children) this.createElement(element.children)
     })
