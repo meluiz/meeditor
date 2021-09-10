@@ -18,9 +18,7 @@
 
     html,
     body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      margin: 64px;
       background-color: #f6f6f6;
     }
   </style>
@@ -28,11 +26,12 @@
 <body>
 
   <div class="editor"></div>
-  <div class="editor-2"></div>
   
   <script>
     MEEditor.start({
-      selector: '.editor'
+      selector: '.editor',
+      width: 768,
+      height: 112,
     })
   </script>
 </body>
