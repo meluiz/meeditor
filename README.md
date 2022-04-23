@@ -59,7 +59,7 @@ Pronto, seu editor foi criado com sucesso.
   <tr>
     <td align="center">
       <a href="https://github.com/meluiz">
-        <img src="https://avatars.githubusercontent.com/u/52682525?v=4" width="100px;" alt="Foto do Iuri Silva no GitHub"/><br>
+        <img src="https://avatars.githubusercontent.com/u/52682525?v=4" width="100px;" alt="Foto do Luiz Felipe no GitHub"/><br>
         <sub>
           <b>Luiz Felipe</b>
         </sub>
